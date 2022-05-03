@@ -2,8 +2,6 @@
 	{
 		"FirstName" : "Tom",
 		"LastName" : "Jones",
-		"AccountType1" : "Checking",
-		"AccountType2" : "Saving",
 		"AccountNumC" : 5475835230,
 		"AccountNumS" : 5475835231,
 		"BalanceC" : "$1,900.86",
@@ -13,12 +11,19 @@
 	{
 		"FirstName" : "Erica",
 		"LastName" : "Johnson",
-		"AccountType1" : "Checking",
-		"AccountType2" : "Saving",
 		"AccountNumC" : 5475806426,
 		"AccountNumS" : 5475806427,
 		"BalanceC" : "$3,940.86",
 		"BalanceS" : "$40,87.89"
+		
+	},
+	{
+		"FirstName" : "Kim",
+		"LastName" : "Thomas",
+		"AccountNumC" : 5475835453,
+		"AccountNumS" : 5475835454,
+		"BalanceC" : "$6,764.32",
+		"BalanceS" : "$90,343.04"
 		
 	}
 

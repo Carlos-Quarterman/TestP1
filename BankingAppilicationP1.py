@@ -67,23 +67,23 @@ def DisplayAll():
     if FirstName == 'Tom' and LastName == 'Jones' :
      print(FirstName)
      print(LastName)
-     print({"Account Number For Checking": 5475835230})
+     print({"Checking Account Number": 5475835230})
      print({"Balance": 1900.86})
-     print({"Account Number For Saving": 5475835231})
+     print({"Saving Account Number": 5475835231})
      print({"Balance": 500876.89})
     elif FirstName == 'Erica' and LastName == 'Johnson':
-     print({"FirstName": 'Erica'})
-     print({"Lastname": 'Johnson'})
-     print({"Account Number For Checking": 5475806426})
+     print(FirstName)
+     print(LastName)
+     print({"Checking Account Number": 5475806426})
      print({"Balance": 3940.86})
-     print({"Account Number For Saving": 5475806427})
+     print({"Saving Account Number": 5475806427})
      print({"Balance": 4087.89})
     elif FirstName == 'Kim' and LastName == 'Thomas':
-     print({"FirstName": 'Kim'})
-     print({"Lastname": 'Thomas'})
-     print({"Account Number For Checking": 5475835453})
+     print(FirstName)
+     print(LastName)
+     print({"Checking Account Number": 5475835453})
      print({"Balance": 6764.32})
-     print({"Account Number For Saving": 5475835454})
+     print({"Saving Account Number": 5475835454})
      print({"Balance": 90343.04})
     else :
        print("Invalid")
@@ -127,6 +127,7 @@ while BC != 4:
    if BC == '1':
 
      Checking()
+     
    elif BC =='2':
 
      Saving()
