@@ -1,33 +1,43 @@
-[
-	{
-		"FirstName" : "Tom",
-		"LastName" : "Jones",
-		"AccountNumC" : 5475835230,
-		"AccountNumS" : 5475835231,
-		"BalanceC" : "$1,900.86",
-		"BalanceS" : "$500,876.89"
-		
-	},
-	{
-		"FirstName" : "Erica",
-		"LastName" : "Johnson",
-		"AccountNumC" : 5475806426,
-		"AccountNumS" : 5475806427,
-		"BalanceC" : "$3,940.86",
-		"BalanceS" : "$40,87.89"
-		
-	},
-	{
-		"FirstName" : "Kim",
-		"LastName" : "Thomas",
-		"AccountNumC" : 5475835453,
-		"AccountNumS" : 5475835454,
-		"BalanceC" : "$6,764.32",
-		"BalanceS" : "$90,343.04"
-		
-	}
-
-]
-
-
-
+[{
+  "_id": {
+    "$oid": "626c193108cbcfd36a292281"
+  },
+  "FirstName": "Tom",
+  "LastName": "Jones",
+  "AccountNumC": {
+    "$numberLong": "5475835230"
+  },
+  "AccountNumS": {
+    "$numberLong": "5475835231"
+  },
+  "BalanceC": "$1,900.86",
+  "BalanceS": "$500,876.89"
+},{
+  "_id": {
+    "$oid": "626c193108cbcfd36a292282"
+  },
+  "FirstName": "Erica",
+  "LastName": "Johnson",
+  "AccountNumC": {
+    "$numberLong": "5475806426"
+  },
+  "AccountNumS": {
+    "$numberLong": "5475806427"
+  },
+  "BalanceC": "$3,940.86",
+  "BalanceS": "$4,087.89"
+},{
+  "_id": {
+    "$oid": "626c1aa608cbcfd36a292283"
+  },
+  "FirstName": "Kim",
+  "LastName": "Thomas",
+  "AccountNumC": {
+    "$numberLong": "5475835453"
+  },
+  "AccountNumS": {
+    "$numberLong": "5475835454"
+  },
+  "BalanceC": "$6,764.32",
+  "BalanceS": "$90,343.04"
+}]
