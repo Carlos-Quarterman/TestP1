@@ -13,6 +13,8 @@ collections = myclient.account
 with open('account.json') as a1:
   file_data = json.load(a1)
 
+collections.insert_one(file_data)
+
 class BankingAppilication :
 
  FirstName = ""
