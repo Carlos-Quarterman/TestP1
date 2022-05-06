@@ -1,19 +1,18 @@
 from ast import And, For
 import collections
-import select
+from re import I, X
+from telnetlib import STATUS
+from tkinter import FIRST
 from unittest import result
+from matplotlib.pyplot import close
 import pymongo
-from pymongo import mongo_client
+from pymongo import MongoClient
 import json
+from pprint import pprint 
 
-#Connect to Mongodb
-myclient = pymongo.MongoClient("127.0.0.1", 27017) 
+myclient = MongoClient() 
 db = myclient.Project1
-collections = myclient.account
-
-with open('account.json') as a1:
-  file_data = json.load(a1)
-
+collections = db.account
 
 class BankingAppilication :
 
@@ -22,96 +21,44 @@ class BankingAppilication :
  AccountNumC = ""
  AccountNumS = ""
  BalanceC = ""
- BalanceS = ""
- 
-# Update Balance
+ NewBalanceCw = ""
+ NewBalanceC = ""
+
+#Customer can deposit funds into account
 def Deposit():
- amount = input("Enter amount to be deposit")
- print("Amount Desposit: ", amount)
- file_data.BalanceC = file_data.BalanceC + amount
-print("Balance: ", file_data.BalanceC)
+    AccountNumC =(input("Enter Checking Account Number: ")) 
+    string = collections.find_one({"AccountNumC": (AccountNumC)})
+    currentBalance = string["BalanceC"]
+    amount = (input("Enter amount to be deposit: "))
+    newBalance = int(currentBalance) + int(amount)
+    collections.update_one( {"AccountNumC": AccountNumC }, { "$set" : {"newBalance" : newBalance} } ) 
+    print(collections.find_one({"AccountNumC": AccountNumC}))
 
-
-#delete 
+#Customer can withdraw funds out their account
 def Withdraw():
- amount = input("Enter amount to be deposit")
- print("Amount Desposit: ", amount)
- file_data.BalanceC = file_data.BalanceC - amount
-print("Balance: ", file_data.BalanceC)
+    AccountNumC =(input("Enter Checking Account Number: ")) 
+    string = collections.find_one({"AccountNumC": (AccountNumC)})
+    currentBalance = string["BalanceC"]
+    amount = (input("Enter amount to be deposit: "))
+    newBalance = int(currentBalance) - int(amount)
+    collections.update_one( {"AccountNumC": AccountNumC }, { "$set" : {"newBalance" : newBalance} } ) 
+    print(collections.find_one({"AccountNumC": AccountNumC}))
 
-
-#Reading Account
+#Viewing checking account
 def Checking():
-  AccountNumC = int(input("Enter Checking Account Number: "))
-  file_data.collection.find(AccountNumC) 
-  if AccountNumC == file_data.collection.find() :
-   print(file_data.FirstName)
-   print(file_data.LastName)
-   print("Checking Account Number:" , AccountNumC)
-   print("Balance:" " ${:,.2f}".format(file_data.BalanceC))
- #elif AccountNumC == 5475806426 :
-  #print("First Name: " 'Erica')
-  #print("Last Name: " 'Johnson')
-  #print("Checking Account Number:" , AccountNumC)
-  #print("Balance:" " ${:,.2f}".format(3940.86))
- #elif AccountNumC == 5475835453 :
-  #print("First Name: " 'Kim')
-  #print("Last Name: " 'Thomas')
-  #print("Account Number:" , AccountNumC)
-  #print("Balance:" " ${:,.2f}".format(6764.32))
-  else :
-   print("Invalid")
-#def Saving():
- #AccountNumS = int(input("Enter Saving Account Number: "))
- #file_data.collection.find({AccountNumS : ""}) 
- #if AccountNumS == 5475835231 :
-  #print("First Name: " 'Tom')
-  #print("Last Name: " 'Jones')
-  #print("Saving Account Number:" , AccountNumS)
-  #print("Balance:" " $ {:,.2f}".format(500876.89))
- #elif AccountNumS == 5475806427 :
-  #print("First Name: " 'Erica')
-  #print("Last Name: " 'Johnson')
-  #print("Saving Account Number:", AccountNumS)
-  #print("Balance:" " ${:,.2f}".format(4087.89))
- #elif AccountNumS == 5475835454 :
-  #print("First Name: " 'Kim')
-  #print("Last Name: " 'Thomas')
-  #print("Saving Account Number:", AccountNumS)
-  #print("Balance:" " $ {:,.2f}".format(90343.04))
- #else :
-  #print("Invalid")
+ AccountNumC=(input("Enter Checking Account Number: ")) 
+ print(collections.find_one( {"AccountNumC" : (AccountNumC) }))
+
+# Import Data
+def ImportData() :
+  with open('account.json') as a1:
+   file_data = json.load(a1)
+  collections.insert_many(file_data)
 
 def DisplayAll():
     FirstName = input("Enter First Name: ")
-    file_data.collection.find(FirstName)
     LastName = input("Enter Last Name: ")
-    file_data.collection.find(FirstName)
-   # account.find({FirstName : ''})
-   # account.find({LastName : ''}) 
-    if FirstName and LastName  :
-     print(FirstName)
-     print(LastName)
-     print("Checking Account Number: ", file_data.collection.find.AccountNumC)
-     print("Checking Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceC))
-     print("Saving Account Number: ", file_data.collection.find.BalanceS)
-     print("Saving Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceS))
-    elif FirstName  and LastName :
-     print(FirstName)
-     print(LastName)
-     print("Checking Account Number: ", file_data.collection.find.AccountNumC)
-     print("Checking Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceC))
-     print("Saving Account Number: ", file_data.collection.find.AccountNumS)
-     print("Saving Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceS))
-    elif FirstName and LastName :
-     print(FirstName)
-     print(LastName)
-     print("Checking Account Number: ", file_data.collection.find.AccountNumC)
-     print("Checking Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceC))
-     print("Saving Account Number: ", file_data.collection.find.AccountNumS)
-     print("Saving Account Balance:" " ${:,.2f}".format(file_data.collection.find.BalanceS))
-    else :
-       print("Invalid")
+    print(collections.find_one( {"FirstName" : (FirstName) }))
 
 #Introduction of the Banking Application
 
@@ -139,15 +86,15 @@ while BC != 5:
 
    print("\t1. Checking Account")
 
-   #print("\t2. Savings Account")
-
    print("\t2. Deposit")
 
-   print("\t3. Withdown")
+   print("\t3. Withdraw")
 
    print("\t4. Display Account Information")
 
-   print("\t5. Exit")
+   print("\t5. Import Data")
+
+   print("\t6. Exit")
 
    print("\tSelect Your Option (1-6): ")
 
@@ -155,12 +102,8 @@ while BC != 5:
 
    if BC == '1':
 
-     Checking()
+    Checking()
      
-   #elif BC =='2':
-
-     #Saving()
-
    elif BC == '2':
 
      Deposit()
@@ -174,6 +117,10 @@ while BC != 5:
      DisplayAll()
 
    elif BC == '5':
+
+     ImportData()
+
+   elif BC == '6':
 
        print("\tThanks for using Apple Banking System")
 
