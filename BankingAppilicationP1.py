@@ -47,53 +47,41 @@ def Checking():
  AccountNumC=(input("Enter Checking Account Number: ")) 
  print(collections.find_one( {"AccountNumC" : (AccountNumC) }))
 
-# Import Data
-#def ImportData() :
-  #with open('account.json') as a1:
-   #file_data = json.load(a1)
-  #collections.insert_many(file_data)
-
+#View customer account information
 def DisplayAll():
     FirstName = input("Enter First Name: ")
     LastName = input("Enter Last Name: ")
     print(collections.find_one( {"FirstName" : (FirstName)}))
 
 #Introduction of the Banking Application
-
 def Intro():
 
-   print("\t\t\t\t**********************")
+   print("\t\t\t\t*****************************")
 
-   print("\t\t\t\t*APPLE ONLINE BANKING*")
+   print("\t\t\t\t***REVATURE ONLINE BANKING***")
+   
+   print("\t\t\t\t*****************************")
 
-   print("\t\t\t\t**********************")
+   print("\t\t\t\t*We care about our customers*")
 
-   #input()
+   print("\t\t\t\t*****************************")
 
 # start of the program
-
 BC = " "
 
 num = 0
 
 Intro()
 
-while BC != 4:
+while BC != 5:
 
    print("\tMain Menu")
 
    print("\t1. Checking Account")
-
    print("\t2. Deposit")
-
    print("\t3. Withdraw")
-
    print("\t4. Display Account Information")
-
-   #print("\t5. Import Data")
-
    print("\t5. Exit")
-
    print("\tSelect Your Option (1-5): ")
 
    BC = input()
@@ -114,13 +102,9 @@ while BC != 4:
 
      DisplayAll()
 
-   #elif BC == '5':
-
-     #ImportData()
-
    elif BC == '5':
 
-       print("\tThanks for using Apple Banking System")
+       print("\tThanks for using Revature Banking System")
 
        break
 
