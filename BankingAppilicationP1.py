@@ -53,7 +53,7 @@ def ImportData() :
   with open('account.json') as a1:
    file_data = json.load(a1)
   collections.insert_many(file_data)
-
+  
 def DisplayAll():
     FirstName = input("Enter First Name: ")
     LastName = input("Enter Last Name: ")
