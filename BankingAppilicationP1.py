@@ -6,6 +6,7 @@ import pymongo
 from pymongo import mongo_client
 import json
 
+#Connect to Mongodb
 myclient = pymongo.MongoClient("127.0.0.1", 27017) 
 db = myclient.Project1
 collections = myclient.account
@@ -13,7 +14,6 @@ collections = myclient.account
 with open('account.json') as a1:
   file_data = json.load(a1)
 
-collections.insert_one(file_data)
 
 class BankingAppilication :
 
