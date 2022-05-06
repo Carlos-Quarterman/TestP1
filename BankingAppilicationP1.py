@@ -52,7 +52,7 @@ def DisplayAll():
     FirstName = input("Enter First Name: ")
     LastName = input("Enter Last Name: ")
     print(collections.find_one( {"FirstName" : (FirstName)}))
-
+  
 #Introduction of the Banking Application
 def Intro():
 
