@@ -20,8 +20,7 @@ class BankingAppilication :
  AccountNumC = ""
  AccountNumS = ""
  BalanceC = ""
- NewBalanceCw = ""
- NewBalanceC = ""
+ newBalance = ""
 
 #Customer can deposit funds into account
 def Deposit():
@@ -49,15 +48,15 @@ def Checking():
  print(collections.find_one( {"AccountNumC" : (AccountNumC) }))
 
 # Import Data
-def ImportData() :
-  with open('account.json') as a1:
-   file_data = json.load(a1)
-  collections.insert_many(file_data)
-  
+#def ImportData() :
+  #with open('account.json') as a1:
+   #file_data = json.load(a1)
+  #collections.insert_many(file_data)
+
 def DisplayAll():
     FirstName = input("Enter First Name: ")
     LastName = input("Enter Last Name: ")
-    print(collections.find_one( {"FirstName" : (FirstName) }))
+    print(collections.find_one( {"FirstName" : (FirstName)}))
 
 #Introduction of the Banking Application
 
@@ -79,7 +78,7 @@ num = 0
 
 Intro()
 
-while BC != 5:
+while BC != 4:
 
    print("\tMain Menu")
 
@@ -91,11 +90,11 @@ while BC != 5:
 
    print("\t4. Display Account Information")
 
-   print("\t5. Import Data")
+   #print("\t5. Import Data")
 
-   print("\t6. Exit")
+   print("\t5. Exit")
 
-   print("\tSelect Your Option (1-6): ")
+   print("\tSelect Your Option (1-5): ")
 
    BC = input()
 
@@ -115,11 +114,11 @@ while BC != 5:
 
      DisplayAll()
 
+   #elif BC == '5':
+
+     #ImportData()
+
    elif BC == '5':
-
-     ImportData()
-
-   elif BC == '6':
 
        print("\tThanks for using Apple Banking System")
 
