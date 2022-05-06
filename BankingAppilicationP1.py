@@ -9,7 +9,6 @@ import pymongo
 from pymongo import MongoClient
 import json
 
-
 myclient = MongoClient() 
 db = myclient.Project1
 collections = db.account
