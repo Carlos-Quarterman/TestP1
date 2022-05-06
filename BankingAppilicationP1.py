@@ -8,7 +8,7 @@ from matplotlib.pyplot import close
 import pymongo
 from pymongo import MongoClient
 import json
-from pprint import pprint 
+
 
 myclient = MongoClient() 
 db = myclient.Project1
