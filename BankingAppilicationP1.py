@@ -8,6 +8,7 @@ from matplotlib.pyplot import close
 import pymongo
 from pymongo import MongoClient
 import json
+from pprint import pprint 
 
 myclient = MongoClient() 
 db = myclient.Project1
@@ -23,10 +24,7 @@ class BankingAppilication :
  NewBalanceCw = ""
  NewBalanceC = ""
 
-# Update Balance: By entering in their checking account number then inputting the amount the user want 
-# to deposit into their existing account. Print out the user account information with the old balance
-# and new balance.
-#
+#Customer can deposit funds into account
 def Deposit():
     AccountNumC =(input("Enter Checking Account Number: ")) 
     string = collections.find_one({"AccountNumC": (AccountNumC)})
@@ -36,7 +34,7 @@ def Deposit():
     collections.update_one( {"AccountNumC": AccountNumC }, { "$set" : {"newBalance" : newBalance} } ) 
     print(collections.find_one({"AccountNumC": AccountNumC}))
 
-#delete 
+#Customer can withdraw funds out their account
 def Withdraw():
     AccountNumC =(input("Enter Checking Account Number: ")) 
     string = collections.find_one({"AccountNumC": (AccountNumC)})
@@ -46,7 +44,7 @@ def Withdraw():
     collections.update_one( {"AccountNumC": AccountNumC }, { "$set" : {"newBalance" : newBalance} } ) 
     print(collections.find_one({"AccountNumC": AccountNumC}))
 
-#Reading Account
+#Viewing checking account
 def Checking():
  AccountNumC=(input("Enter Checking Account Number: ")) 
  print(collections.find_one( {"AccountNumC" : (AccountNumC) }))

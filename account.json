@@ -3,17 +3,24 @@
   "FirstName": "Tom",
   "LastName": "Jones",
   "AccountNumC": "5475835230",
-  "BalanceC": "$1,900.86"
+  "BalanceC": "1900"
 },{
   
   "FirstName": "Erica",
   "LastName": "Johnson",
   "AccountNumC": "5475806426",
-  "BalanceC": "$3,940.86"
+  "BalanceC": "3940"
 },{
+  
+    "FirstName": "Joe",
+    "LastName": "Peter",
+    "AccountNumC": "5475806465",
+    "BalanceC": "3340"
+  },
+  {
   
   "FirstName": "Kim",
   "LastName": "Thomas",
   "AccountNumC": "5475835453",
-  "BalanceC": "$6,764.32"
+  "BalanceC": "6764"
 }]
