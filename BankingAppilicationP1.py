@@ -28,19 +28,18 @@ class BankingAppilication :
 def Create() :
   FirstName = (input("Enter First Name: "))
   LastName = (input ("Enter Last Name: "))
-  AccountNumC = random.randint(5475100000, 5475899999)  
+  AccountNumC = random.randint(5475100000, 5475999999)  
   BalanceC = (input ("Enter deposit ammount: "))
   collections.insert_one({"FirstName" : FirstName, "LastName" : LastName, "AccountNumC" : AccountNumC, "BalanceC" : BalanceC})
-  print("Customer account added succussfully!")
+  print("New customer account added successfully!")
   print(collections.find_one({"AccountNumC": AccountNumC}))
-
 
 #Delete Customer
 def Delete() :
  FirstName = (input("Enter First Name: "))
  LastName = (input ("Enter Last Name "))
  collections.delete_one({"FirstName" : FirstName})
- print("Customer account removed succusfully!")
+ print("Customer account removed successfully!")
 
 #Customer can deposit funds into account
 def Deposit():
@@ -102,7 +101,7 @@ while BC != 7:
    print("\t3. Withdraw")
    print("\t4. Display Account Information")
    print("\t5. Create Customer Account")
-   print("\t6. Delete Customer Account")
+   print("\t6. Remove Customer Account")
    print("\t7. Exit")
    print("\tSelect Your Option (1-7): ")
 
