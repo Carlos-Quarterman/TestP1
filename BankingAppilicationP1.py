@@ -1,5 +1,6 @@
 from ast import And, For
 import collections
+from random import randint
 from re import I, X
 from telnetlib import STATUS
 from tkinter import FIRST
@@ -8,6 +9,8 @@ from matplotlib.pyplot import close
 import pymongo
 from pymongo import MongoClient
 import json
+import random
+import string 
 
 myclient = MongoClient() 
 db = myclient.Project1
@@ -18,9 +21,26 @@ class BankingAppilication :
  FirstName = ""
  LastName = ""
  AccountNumC = ""
- AccountNumS = ""
  BalanceC = ""
  newBalance = ""
+
+# Add New Customer
+def Create() :
+  FirstName = (input("Enter First Name: "))
+  LastName = (input ("Enter Last Name: "))
+  AccountNumC = random.randint(5475100000, 5475899999)  
+  BalanceC = (input ("Enter deposit ammount: "))
+  collections.insert_one({"FirstName" : FirstName, "LastName" : LastName, "AccountNumC" : AccountNumC, "BalanceC" : BalanceC})
+  print("Customer account added succussfully!")
+  print(collections.find_one({"AccountNumC": AccountNumC}))
+
+
+#Delete Customer
+def Delete() :
+ FirstName = (input("Enter First Name: "))
+ LastName = (input ("Enter Last Name "))
+ collections.delete_one({"FirstName" : FirstName})
+ print("Customer account removed succusfully!")
 
 #Customer can deposit funds into account
 def Deposit():
@@ -73,7 +93,7 @@ num = 0
 
 Intro()
 
-while BC != 5:
+while BC != 7:
 
    print("\tMain Menu")
 
@@ -81,8 +101,10 @@ while BC != 5:
    print("\t2. Deposit")
    print("\t3. Withdraw")
    print("\t4. Display Account Information")
-   print("\t5. Exit")
-   print("\tSelect Your Option (1-5): ")
+   print("\t5. Create Customer Account")
+   print("\t6. Delete Customer Account")
+   print("\t7. Exit")
+   print("\tSelect Your Option (1-7): ")
 
    BC = input()
 
@@ -103,6 +125,14 @@ while BC != 5:
      DisplayAll()
 
    elif BC == '5':
+    
+    Create()
+
+   elif BC == '6':
+    
+    Delete()
+
+   elif BC == '7':
 
        print("\tThanks for using Revature Banking System")
 
